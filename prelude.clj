@@ -44,14 +44,13 @@
             (butlast (reverse increasing)))))
 
 ;;; (recording-start "~/my-overtone/output/ff-prelude.wav")
-(play-seq-loop
- tri2 160
- (flatten
-  (map prelude-line
-       [[:C :D :E :G] [:a :b :C :E]
-        [:C :D :E :G] [:a :b :C :E]
-        [:a :C :F :G] [:b :D :G :A]
-        [:g+ :C :D+ :G] [:a+ :D :F :A]
-        [:C :D :E :G] [:a :b :C :E]])))
-
+(let [prelude (flatten
+               (map prelude-line
+                    (conj (into []
+                                (take 4 (cycle [[:C :D :E :G] [:a :b :C :E]])))
+                          [:a :C :F :G] [:b :D :G :A]
+                          [:g+ :C :D+ :G] [:a+ :D :F :A])))]
+  (play-seq-loop
+   tri2 160 (flatten (repeat 2 prelude))))   
+ 
 ;;; (recording-stop)
