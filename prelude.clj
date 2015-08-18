@@ -7,7 +7,7 @@
 
 ;;;; http://vishnumenon.com/2013/06/25/musical-chains-music-generation-with-clojure/
 
-(definst triangle-wave [freq 440 attack 0.01 sustain 0.15 release 0.1 vol 0.6]
+(definst triangle-wave [freq 440 attack 0.01 sustain 0.18 release 0.2 vol 0.6]
   (* (env-gen (env-lin attack sustain release) 1 1 0 1 FREE)
      (lf-tri freq)
      vol))
@@ -43,7 +43,7 @@
     (concat increasing [(+ (* 12 4) (first base))]
             (butlast (reverse increasing)))))
 
-;;; (recording-start "~/my-overtone/output/ff-prelude.wav")
+(recording-start "~/my-overtone/output/ff-prelude-sustain.wav")
 (let [prelude (flatten
                (map prelude-line
                     (conj (into []
@@ -53,4 +53,4 @@
   (play-seq-loop
    tri2 160 (flatten (repeat 2 prelude))))   
  
-;;; (recording-stop)
+(recording-stop)
