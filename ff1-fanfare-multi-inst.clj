@@ -5,7 +5,7 @@
 
 ;;;; https://github.com/overtone/overtone/wiki/Pitches-and-Chords
 
-(definst saw-wave [freq 440 attack 0.01 sustain 0.23 release 0.14 vol 0.4]
+(definst saw-wave [freq 440 attack 0.01 sustain 0.22 release 0.32 vol 0.4]
   (* (env-gen (env-lin attack sustain release) 1 1 0 1 FREE)
      (saw freq)
      vol))
@@ -14,7 +14,7 @@
   (if (> music-note 0)
     (saw-wave (midi->hz (note music-note)))))
 
-(definst triangle-wave [freq 440 attack 0.01 sustain 0.20 release 0.15 vol 0.75]
+(definst triangle-wave [freq 440 attack 0.01 sustain 0.16 release 0.15 vol 0.75]
   (* (env-gen (env-lin attack sustain release) 1 1 0 1 FREE)
      (lf-tri freq)
      vol))
@@ -75,7 +75,7 @@
 
 ;;; (play-voices saw2 1200 [:c :e :g] [:e :r :b] [:g :r :d])
 
-;;; (recording-start "~/my-overtone/output/ff-fanfare.wav")
+;;; (recording-start "~/my-overtone/output/ff-fanfare-sustain.wav")
 (play-voices [saw2 saw2 tri2] 200
              [:A+ :r :G+ :r   :A+ :r :G+ :aC+ :r :aC+ :aC :r  :aC+ :aC :r :aC :A+ :r :G+ :r :G :r :G+ :F  :r :r :r :r :r :r :r :r
               :A+ :r :G+ :r   :A+ :r :G+ :aC+ :r :aC+ :aC :r  :aC+ :aC :r :aC :A+ :r :G+ :r :A+ :r :aC+ :aD+  :r :r :r :r :r :r :r :r

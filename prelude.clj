@@ -43,7 +43,7 @@
     (concat increasing [(+ (* 12 4) (first base))]
             (butlast (reverse increasing)))))
 
-(recording-start "~/my-overtone/output/ff-prelude-sustain.wav")
+;;; (recording-start "~/my-overtone/output/ff-prelude-sustain.wav")
 (let [prelude (flatten
                (map prelude-line
                     (conj (into []
@@ -53,4 +53,4 @@
   (play-seq-loop
    tri2 160 (flatten (repeat 2 prelude))))   
  
-(recording-stop)
+;;; (recording-stop)
